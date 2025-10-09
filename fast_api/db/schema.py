@@ -1,11 +1,11 @@
 import toml
 from sqlalchemy import Column, Integer, String
 import sqlalchemy 
-from db import engine
+from db.sql import engine
 from pydantic import BaseModel
 
 #import config 
-with open("../config.toml", "r") as f:
+with open("config.toml", "r") as f:
     config = toml.load(f)
 
 Base = sqlalchemy.orm.declarative_base()
@@ -19,16 +19,16 @@ class Book(Base):
     description = Column(String)
 
 #defining data model for item creation
-class ItemCreate(BaseModel):
+class BookCreate(BaseModel):
     title: str 
     author: str
     description: str 
 
 #data model for item retrieval
-class ItemResponse(BaseModel):
+class BookResponse(BaseModel):
     id: int 
     title: str
-    name: str 
+    author: str 
     description: str 
 
 #create table 

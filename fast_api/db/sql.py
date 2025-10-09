@@ -5,7 +5,7 @@ import sqlalchemy
 
 
 #import config 
-with open("../config.toml", "r") as f:
+with open("config.toml", "r") as f:
     config = toml.load(f)
 
 

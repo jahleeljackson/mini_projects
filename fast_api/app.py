@@ -1,30 +1,31 @@
 import toml
 from fastapi import FastAPI, Depends, HTTPException 
 from sqlalchemy.orm import Session 
-from db import Item, ItemResponse, ItemCreate
-from db import get_db
+from db.schema import Book, BookCreate, BookResponse
+from db.sql import get_db
 
 
 #fastapi instance 
 app = FastAPI() 
 
 #import config 
-with open("../config.toml", "r") as f:
+with open("config.toml", "r") as f:
     config = toml.load(f)
 
+
 #api endpoint to create a user 
-@app.post("/items", response_model=ItemResponse)
-async def create_item(item: ItemCreate, db: Session = Depends(get_db)):
-    db_item = Item(**item.model_dump())
+@app.post("/books", response_model=BookResponse)
+async def create_book(db_name: BookCreate, db: Session = Depends(get_db)):
+    db_item = Book(**db_name.model_dump())
     db.add(db_item)
     db.commit()
     db.refresh(db_item)
     return db_item
 
 #api endpoint to read a user
-@app.get("/items/{item_id}", response_model=ItemResponse)
+@app.get("/books/{book_id}", response_model=BookResponse)
 async def read_item(item_id: int, db: Session = Depends(get_db)):
-    db_item = db.query(Item).filter(Item.id == item_id).first()
+    db_item = db.query(Book).filter(Book.id == item_id).first()
     if db_item is None:
         raise HTTPException(status_code=404, detail="Item not found")
     return db_item
