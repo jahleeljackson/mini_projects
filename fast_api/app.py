@@ -30,6 +30,14 @@ async def read_item(item_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Item not found")
     return db_item
 
+@app.delete("/books/{book_id}", response_model=BookResponse)
+async def read_item(item_id: int, db: Session = Depends(get_db)):
+    db_item = db.query(Book).filter(Book.id == item_id).first()
+    db.delete(db_item)
+    if db_item is None:
+        raise HTTPException(status_code=404, detail="Item not found")
+    return db_item
+
 
 if __name__ == "__main__":
     import uvicorn 
