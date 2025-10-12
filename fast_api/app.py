@@ -28,14 +28,14 @@ async def home():
 
 #api endpoint to read a user
 @app.get("/books/{book_id}", response_model=BookResponse)
-async def read_item(item_id: int, db: Session = Depends(get_db)):
+async def read_book(item_id: int, db: Session = Depends(get_db)):
     db_item = db.query(Book).filter(Book.id == item_id).first()
     if db_item is None:
         raise HTTPException(status_code=404, detail="Item not found")
     return db_item
 
 @app.delete("/books/{book_id}", response_model=BookResponse)
-async def read_item(item_id: int, db: Session = Depends(get_db)):
+async def delete_book(item_id: int, db: Session = Depends(get_db)):
     db_item = db.query(Book).filter(Book.id == item_id).first()
     db.delete(db_item)
     if db_item is None:
