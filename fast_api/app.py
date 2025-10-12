@@ -22,6 +22,10 @@ async def create_book(db_name: BookCreate, db: Session = Depends(get_db)):
     db.refresh(db_item)
     return db_item
 
+@app.get("/")
+async def home():
+    return {"jahleel": "jackson"}
+
 #api endpoint to read a user
 @app.get("/books/{book_id}", response_model=BookResponse)
 async def read_item(item_id: int, db: Session = Depends(get_db)):
