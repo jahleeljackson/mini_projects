@@ -5,7 +5,7 @@
 **Run the following commands in terminal in the docker/ directory** 
 
 ```bash
-docker built -t basic-app .
+docker build -t basic-app .
 ```
 
 ```bash

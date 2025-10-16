@@ -13,6 +13,11 @@ with open("src/config.toml", "r") as f:
     config = toml.load(f)
 
 
+@app.get("/")
+async def home():
+    return {"Jahleel": "Jackson"}
+
+
 #api endpoint to create a user 
 @app.post("/items", response_model=ItemResponse)
 async def create_item(db_name: ItemCreate, db: Session = Depends(get_db)):
