@@ -21,5 +21,10 @@ pip install -r requirements.txt
 
 4.
 ```bash
-python3 app.py
+python3 app.py  
 ```
+
+Resources: 
+1. [GeeksforGeeks (FastAPI)](https://www.geeksforgeeks.org/python/fastapi-introduction/)
+2. [FastAPI](https://fastapi.tiangolo.com/tutorial/)
+3. [GeeksforGeeks (FastAPI & SQLite)](https://www.geeksforgeeks.org/python/fastapi-sqlite-databases/)
