@@ -1,0 +1,7 @@
+db_name = "test"
+
+table_name = "items"
+
+host = "127.0.0.1"
+
+port = 8000
