@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/290953786829519714/ccaee1c3f28444acaa03b885ed9a3627/artifacts
+end_time: 1760905544557
+entry_point_name: ''
+experiment_id: '290953786829519714'
+lifecycle_stage: active
+run_id: ccaee1c3f28444acaa03b885ed9a3627
+run_name: apples_rf_test
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760905540566
+status: 3
+tags: []
+user_id: jahleeljackson
